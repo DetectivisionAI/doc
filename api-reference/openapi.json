@@ -1,450 +1,188 @@
 {
+	"openapi": "3.0.1",
 	"info": {
-		"_postman_id": "872b0461-ddaf-4172-9c72-73b8b6714603",
-		"name": "Service API Gateway",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "39316645",
-		"_collection_link": "https://api-team-9223.postman.co/workspace/Detectivision~20c42d2f-d8e9-4a27-9e4f-64df9508d920/collection/39316645-872b0461-ddaf-4172-9c72-73b8b6714603?action=share&source=collection_link&creator=39316645"
+		"title": "OpenAPI Plant Store",
+		"description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+		"license": {
+			"name": "MIT"
+		},
+		"version": "1.0.0"
 	},
-	"item": [
+	"servers": [
 		{
-			"name": "Image",
-			"item": [
-				{
-					"name": "Segmentation",
-					"item": [
-						{
-							"name": "Detect",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"url\": \"https://lh5.googleusercontent.com/proxy/XRlS7SlY6l8UcaPvncIW2Hf07llEm_s5hWvrRu49ocCcJPJbEWuaudjpsmJ17oAd7kJKH38\",\r\n    \"modelId\": 1\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{Api-Server}}/api/v1/image/segmentation/detect?format=json",
-									"host": [
-										"{{Api-Server}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"image",
-										"segmentation",
-										"detect"
-									],
-									"query": [
-										{
-											"key": "url",
-											"value": "https://lh5.googleusercontent.com/proxy/XRlS7SlY6l8UcaPvncIW2Hf07llEm_s5hWvrRu49ocCcJPJbEWuaudjpsmJ17oAd7kJKH38",
-											"disabled": true
-										},
-										{
-											"key": "format",
-											"value": "json"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Paint",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://127.0.0.1:8787/api/v1/segmentation/image/:id/paint?type=censor",
-									"protocol": "http",
-									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
-									],
-									"port": "8787",
-									"path": [
-										"api",
-										"v1",
-										"segmentation",
-										"image",
-										":id",
-										"paint"
-									],
-									"query": [
-										{
-											"key": "type",
-											"value": "censor"
-										}
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "123123124124"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Storage",
-			"item": [
-				{
-					"name": "Upload",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "files",
-									"type": "file",
-									"src": "/C:/Users/Bedirhan/Desktop/Detectivision/Demo/python-server/test-data/237.jpeg"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8787/api/v1/storage/upload",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8787",
-							"path": [
-								"api",
-								"v1",
-								"storage",
-								"upload"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8787/api/v1/storage/get/:id",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8787",
-							"path": [
-								"api",
-								"v1",
-								"storage",
-								"get",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "fe87136f-47a3-4427-85e0-330b2c359443192.jpg"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Job",
-			"item": [
-				{
-					"name": "Result",
-					"item": [
-						{
-							"name": "All Result",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{Api-Server}}/api/v1/job/:id/results",
-									"host": [
-										"{{Api-Server}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"job",
-										":id",
-										"results"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get  Result",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{Api-Server}}/api/v1/job/:id/results/:idx",
-									"host": [
-										"{{Api-Server}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"job",
-										":id",
-										"results",
-										":idx"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "1"
-										},
-										{
-											"key": "idx",
-											"value": "3"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create Result",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n   \"spam\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{Api-Server}}/api/v1/job/:id/results",
-									"host": [
-										"{{Api-Server}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"job",
-										":id",
-										"results"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update Result",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"url": {
-									"raw": "{{Api-Server}}/api/v1/job",
-									"host": [
-										"{{Api-Server}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"job"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Result",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{Api-Server}}/api/v1/job",
-									"host": [
-										"{{Api-Server}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"job"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Get Job",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{Api-Server}}/api/v1/job/:id",
-							"host": [
-								"{{Api-Server}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"job",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "43"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Job",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"url\": \"https://lh5.googleusercontent.com/proxy/XRlS7SlY6l8UcaPvncIW2Hf07llEm_s5hWvrRu49ocCcJPJbEWuaudjpsmJ17oAd7kJKH38\",\r\n    \"modelId\": 1\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{Api-Server}}/api/v1/job",
-							"host": [
-								"{{Api-Server}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"job"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Job",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "{{Api-Server}}/api/v1/job",
-							"host": [
-								"{{Api-Server}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"job"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Job",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{Api-Server}}/api/v1/job",
-							"host": [
-								"{{Api-Server}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"job"
-							]
-						}
-					},
-					"response": []
-				}
-			]
+			"url": "http://sandbox.mintlify.com"
 		}
 	],
-	"auth": {
-		"type": "apikey",
-		"apikey": [
-			{
-				"key": "value",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmVkaXJoYW4iLCJhcGlLZXkiOiIyMjIyMTEyMzEyMyJ9.xFFFZL-KlhmwOi3dJtQKSHyfpNuWU1gfC3mrDQbN6dc",
-				"type": "string"
-			},
-			{
-				"key": "in",
-				"value": "header",
-				"type": "string"
-			},
-			{
-				"key": "key",
-				"value": "X-API-KEY",
-				"type": "string"
-			}
-		]
-	},
-	"event": [
+	"security": [
 		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
+			"bearerAuth": []
+		}
+	],
+	"paths": {
+		"/plants": {
+			"get": {
+				"description": "Returns all plants from the system that the user has access to",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "The maximum number of results to return",
+						"schema": {
+							"type": "integer",
+							"format": "int32"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Plant response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Plant"
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Unexpected error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								}
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"description": "Creates a new plant in the store",
+				"requestBody": {
+					"description": "Plant to add to the store",
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/NewPlant"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "plant response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Plant"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "unexpected error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								}
+							}
+						}
+					}
+				}
 			}
 		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
+		"/plants/{id}": {
+			"delete": {
+				"description": "Deletes a single plant based on the ID supplied",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "ID of plant to delete",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"responses": {
+					"204": {
+						"description": "Plant deleted",
+						"content": {}
+					},
+					"400": {
+						"description": "unexpected error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								}
+							}
+						}
+					}
+				}
 			}
 		}
-	]
+	},
+	"components": {
+		"schemas": {
+			"Plant": {
+				"required": ["name"],
+				"type": "object",
+				"properties": {
+					"name": {
+						"description": "The name of the plant",
+						"type": "string"
+					},
+					"tag": {
+						"description": "Tag to specify the type",
+						"type": "string"
+					}
+				}
+			},
+			"NewPlant": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/Plant"
+					},
+					{
+						"required": ["id"],
+						"type": "object",
+						"properties": {
+							"id": {
+								"description": "Identification number of the plant",
+								"type": "integer",
+								"format": "int64"
+							}
+						}
+					}
+				]
+			},
+			"Error": {
+				"required": ["error", "message"],
+				"type": "object",
+				"properties": {
+					"error": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"message": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"securitySchemes": {
+			"bearerAuth": {
+				"type": "http",
+				"scheme": "bearer"
+			}
+		}
+	}
 }

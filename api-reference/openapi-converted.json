@@ -1,0 +1,292 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "Service API Gateway",
+		"description": "API documentation for Service API Gateway",
+		"version": "1.0.0"
+	},
+	"servers": [
+		{
+			"url": "{{Api-Server}}"
+		}
+	],
+	"paths": {
+		"/api/v1/image/segmentation/detect": {
+			"post": {
+				"description": "Detect segmentation in an image",
+				"parameters": [
+					{
+						"name": "format",
+						"in": "query",
+						"description": "The format of the response",
+						"schema": {
+							"type": "string",
+							"enum": ["json", "file"],
+							"default": "json"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"type": "string"
+									},
+									"modelId": {
+										"type": "integer"
+									}
+								},
+								"enum": ["json", "file"],
+								"example": {
+									"url": "https://lh5.googleusercontent.com/proxy/XRlS7SlY6l8UcaPvncIW2Hf07llEm_s5hWvrRu49ocCcJPJbEWuaudjpsmJ17oAd7kJKH38",
+									"modelId": 1
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/ImageSegmentation"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/segmentation/image/{id}/paint": {
+			"get": {
+				"description": "Paint segmentation on an image",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "type",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful response"
+					}
+				}
+			}
+		},
+		"/api/v1/storage/upload": {
+			"post": {
+				"description": "Upload a file",
+				"requestBody": {
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"files": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Successful response"
+					}
+				}
+			}
+		},
+		"/api/v1/storage/get/{id}": {
+			"get": {
+				"description": "Get a file by ID",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful response"
+					}
+				}
+			}
+		},
+		"/api/v1/job/{id}/results": {
+			"get": {
+				"description": "Get all results for a job",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful response"
+					}
+				}
+			},
+			"post": {
+				"description": "Create a result for a job",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"spam": {
+										"type": "boolean"
+									}
+								},
+								"example": {
+									"spam": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Successful response"
+					}
+				}
+			}
+		},
+		"/api/v1/job/{id}/results/{idx}": {
+			"get": {
+				"description": "Get a specific result for a job",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "idx",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful response"
+					}
+				}
+			}
+		},
+		"/api/v1/job": {
+			"post": {
+				"description": "Create a job",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"url": {
+										"type": "string"
+									},
+									"modelId": {
+										"type": "integer"
+									}
+								},
+								"example": {
+									"url": "https://lh5.googleusercontent.com/proxy/XRlS7SlY6l8UcaPvncIW2Hf07llEm_s5hWvrRu49ocCcJPJbEWuaudjpsmJ17oAd7kJKH38",
+									"modelId": 1
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Successful response"
+					}
+				}
+			},
+			"put": {
+				"description": "Update a job",
+				"responses": {
+					"200": {
+						"description": "Successful response"
+					}
+				}
+			},
+			"delete": {
+				"description": "Delete a job",
+				"responses": {
+					"200": {
+						"description": "Successful response"
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"securitySchemes": {
+			"ApiKeyAuth": {
+				"type": "apiKey",
+				"in": "header",
+				"name": "X-API-KEY"
+			}
+		},
+    "schemas": {
+      "ImageSegmentation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "modelId": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+	},
+	"security": [
+		{
+			"ApiKeyAuth": []
+		}
+	]
+}
